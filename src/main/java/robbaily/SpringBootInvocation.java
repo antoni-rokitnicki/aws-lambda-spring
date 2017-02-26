@@ -18,33 +18,28 @@ import org.springframework.context.annotation.Scope;
 @EnableAutoConfiguration
 @ComponentScan()
 public class SpringBootInvocation {
-    private ApplicationContext applicationContext;
+	private ApplicationContext applicationContext;
 
-    public SpringBootInvocation() {
-    }
+	public SpringBootInvocation() {
+	}
 
-    public void run() {
-        String[] args = new String[0];
-        applicationContext = SpringApplication.run(SpringBootInvocation.class, args);
-        /*
-        applicationContext = new SpringApplicationBuilder()
-                .main(getClass())
-                .bannerMode(Banner.Mode.OFF)
-                .web(false)
-                .sources(getClass())
-                .addCommandLineProperties(false)
-                .build()
-                .run();
-       */
-    }
+	public void run() {
+		String[] args = new String[0];
+		applicationContext = SpringApplication.run(SpringBootInvocation.class, args);
+		/*
+		 * applicationContext = new SpringApplicationBuilder() .main(getClass())
+		 * .bannerMode(Banner.Mode.OFF) .web(false) .sources(getClass())
+		 * .addCommandLineProperties(false) .build() .run();
+		 */
+	}
 
-    public ApplicationContext getApplicationContext() {
-        return applicationContext;
-    }
+	public ApplicationContext getApplicationContext() {
+		return applicationContext;
+	}
 
-    @Bean
-    @Scope("prototype")
-    public TestConfiguration testConfiguration() {
-        return new TestConfiguration();
-    }
+	@Bean
+	@Scope("prototype")
+	public TestConfiguration testConfiguration() {
+		return new TestConfiguration();
+	}
 }

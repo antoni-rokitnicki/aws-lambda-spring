@@ -16,23 +16,23 @@ import org.springframework.stereotype.Component;
 @Component
 @Scope("prototype")
 public class RequestComponent {
-    static Log log = LogFactory.getLog(RequestComponent.class);
+	static Log log = LogFactory.getLog(RequestComponent.class);
 
-    @Autowired
-    ApplicationContext applicationContext;
+	@Autowired
+	ApplicationContext applicationContext;
 
-    @Autowired
-    Environment environment;
+	@Autowired
+	Environment environment;
 
-    @Value(value = "${configtest.value}")
-    private String configValue;
+	@Value(value = "${configtest.value}")
+	private String configValue;
 
-    public String processRequest(String name, Context context) {
-        log.info("In the hello function");
-        log.info("Test value here = "+ configValue);
-        log.info("env value = " + environment.getProperty("configtest.value"));
-        TestConfiguration testConfiguration = applicationContext.getBean(TestConfiguration.class);
-        log.info("Test configuration value = " + testConfiguration.getConfigValue());
-        return String.format("Hello %s.", name);
-    }
+	public String processRequest(String name, Context context) {
+		log.info("In the hello function");
+		log.info("Test value here = " + configValue);
+		log.info("env value = " + environment.getProperty("configtest.value"));
+		TestConfiguration testConfiguration = applicationContext.getBean(TestConfiguration.class);
+		log.info("Test configuration value = " + testConfiguration.getConfigValue());
+		return String.format("Hello %s.", name);
+	}
 }
